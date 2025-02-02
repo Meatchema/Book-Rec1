@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Book_Questionaire.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #cf8e6d;}
+.s3 { color: #bcbec4;}
+.s4 { color: #6aab73;}
+.s5 { color: #5f826b; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Book_Questionaire.py</font>
+</center></td></tr></table>
+<pre><span class="s0">######################################################################</span>
+<span class="s0"># Author(s): Ariana Meatchem</span>
+<span class="s0"># Username(s): Meatchema</span>
+<span class="s0">#</span>
+<span class="s0"># Assignment: Book Recommendation Quiz</span>
+<span class="s0">#</span>
+<span class="s0"># Purpose: Create a program that gives specific book recommendations</span>
+<span class="s0">######################################################################</span>
+
+<span class="s2">import </span><span class="s1">random</span>
+<span class="s2">import </span><span class="s1">json</span>
+<span class="s2">def </span><span class="s1">ask_questions</span><span class="s3">():</span>
+    <span class="s1">print</span><span class="s3">(</span><span class="s4">&quot;</span><span class="s2">\n</span><span class="s4">Welcome to Ace's Book Recommendation Quiz!</span><span class="s2">\n</span><span class="s4">Answer the following questions to receive a Book suggestion.</span><span class="s2">\n</span><span class="s4">&quot;</span><span class="s3">)</span>
+    <span class="s1">questions </span><span class="s3">= {</span>
+        <span class="s4">&quot;Genre&quot;</span><span class="s3">: </span><span class="s4">&quot;What genre of book do you prefer? (action, rom-com, fantasy, dark academia, manga) &quot;</span><span class="s3">,</span>
+        <span class="s4">&quot;Amount&quot;</span><span class="s3">: </span><span class="s4">&quot;Do you prefer Standalones or Series?&quot;</span>
+    <span class="s3">}</span>
+    <span class="s1">responses </span><span class="s3">= {}</span>
+    <span class="s2">for </span><span class="s1">key</span><span class="s3">, </span><span class="s1">questions_text </span><span class="s2">in </span><span class="s1">questions</span><span class="s3">.</span><span class="s1">items</span><span class="s3">():</span>
+        <span class="s1">responses</span><span class="s3">[</span><span class="s1">key</span><span class="s3">] = </span><span class="s1">input</span><span class="s3">(</span><span class="s1">questions_text</span><span class="s3">).</span><span class="s1">strip</span><span class="s3">().</span><span class="s1">lower</span><span class="s3">()</span>
+
+    <span class="s2">return </span><span class="s1">responses</span>
+
+<span class="s2">def </span><span class="s1">recommend_book</span><span class="s3">(</span><span class="s1">responses</span><span class="s3">):</span>
+    <span class="s5">&quot;&quot;&quot;Recommend a game based on the user's responses.&quot;&quot;&quot;</span>
+    <span class="s1">Genre </span><span class="s3">= </span><span class="s1">responses</span><span class="s3">.</span><span class="s1">get</span><span class="s3">(</span><span class="s4">&quot;Genre&quot;</span><span class="s3">)</span>
+    <span class="s1">Amount </span><span class="s3">= </span><span class="s1">responses</span><span class="s3">.</span><span class="s1">get</span><span class="s3">(</span><span class="s4">&quot;Amount&quot;</span><span class="s3">)</span>
+
+    <span class="s2">if </span><span class="s1">Genre </span><span class="s3">== </span><span class="s4">&quot;dark academia&quot; </span><span class="s2">and </span><span class="s1">Amount </span><span class="s3">== </span><span class="s4">&quot;Standalones&quot;</span><span class="s3">:</span>
+        <span class="s2">return </span><span class="s4">&quot;Babel&quot;</span>
+    <span class="s2">elif </span><span class="s1">Genre </span><span class="s3">== </span><span class="s4">&quot;fantasy&quot; </span><span class="s2">and </span><span class="s1">Amount </span><span class="s3">== </span><span class="s4">&quot;Standalones&quot;</span><span class="s3">:</span>
+        <span class="s2">return </span><span class="s4">&quot;The Song of Achilles&quot;</span>
+    <span class="s2">else</span><span class="s3">:</span>
+        <span class="s2">return </span><span class="s4">&quot;The Train from Platform 2&quot;</span>
+
+<span class="s2">def </span><span class="s1">main</span><span class="s3">():</span>
+
+    <span class="s1">name </span><span class="s3">= </span><span class="s1">input</span><span class="s3">(</span><span class="s4">&quot;Hello, whats your name?:&quot;</span><span class="s3">)</span>
+    <span class="s1">print</span><span class="s3">(</span><span class="s4">f&quot;Hello, </span><span class="s2">{</span><span class="s1">name</span><span class="s2">}</span><span class="s4">!&quot;</span><span class="s3">)</span>
+    <span class="s1">responses </span><span class="s3">= </span><span class="s1">ask_questions</span><span class="s3">()</span>
+    <span class="s1">recommendation </span><span class="s3">= </span><span class="s1">recommend_book</span><span class="s3">(</span><span class="s1">responses</span><span class="s3">)</span>
+    <span class="s1">print</span><span class="s3">(</span><span class="s4">f&quot;</span><span class="s2">\n</span><span class="s4">🎮 Based on your answers, we recommend: </span><span class="s2">{</span><span class="s1">recommendation</span><span class="s2">} </span><span class="s4">🎮</span><span class="s2">\n</span><span class="s4">&quot;</span><span class="s3">)</span>
+
+
+
+
+<span class="s2">if </span><span class="s1">__name__ </span><span class="s3">== </span><span class="s4">&quot;__main__&quot;</span><span class="s3">:</span>
+    <span class="s1">main</span><span class="s3">()</span></pre>
+</body>
+</html>
